@@ -1,6 +1,6 @@
 # Sevennet::Api
-
-Generic 7netshopping Ruby API using Nokogiri. Uses Response and Element wrapper classes for easy access to the REST API XML output.
+[![Gem Version](https://badge.fury.io/rb/sevennet-api.png)](http://badge.fury.io/rb/sevennet-api)
+Ruby 7netshopping API using Nokogiri. Uses Response and Element wrapper classes for easy access to the REST API XML output.
 
 ## Installation
 
@@ -20,6 +20,7 @@ Or install it yourself as:
 
     require 'sevennet/api'
 
+
     Sevennet::Api.configure do |options|
       options[:ApiUserId] = 'your api user id'
       options[:APISecretKey] = 'your api secret key'
@@ -29,7 +30,7 @@ Or install it yourself as:
     res = Sevennet::Api.get_shopping_category('') # root category
     res = Sevennet::Api.get_shopping_category('books') # books category
     res.categories.each do |category|
-      children = category.get('ChildCategory')
+      children = category.get_elements('ChildCategory')
       children.each do |child|
         code = child.get('CategoryCode')
         ...
@@ -64,7 +65,8 @@ Or install it yourself as:
     res = Sevennet::Api.get_spc_category('') # root category
     res = Sevennet::Api.get_spc_category('home') # home category
     res.categories.each do |category|
-      children = category.get('ChildCategory')
+      children = category.get_elements('ChildCategory')
+      next if children.nil?
       children.each do |child|
         code = child.get('CategoryCode')
         ...
