@@ -16,6 +16,6 @@ end
 require File.expand_path(File.dirname(__FILE__) + '/../lib/sevennet/api')
 
 Sevennet::Api.configure do |options|
-  options[:ApiUserId] = '97F1D0F1A115493491EF3611B61B192E'
-  options[:APISecretKey] = '33C87787177D4D86BF344DF5A6AC05EE9CA45D74'
+  options[:ApiUserId] = 'your api user id'
+  options[:APISecretKey] = 'your api secret key'
 end

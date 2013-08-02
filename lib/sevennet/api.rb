@@ -9,8 +9,6 @@ module Sevennet
   class RequestError < StandardError; end
   
   class Api
-    VERSION = '0.0.1'
-
     SERVICE_URL = 'http://api.7netshopping.jp/ws/affiliate/rest'
 
     @@options = {
