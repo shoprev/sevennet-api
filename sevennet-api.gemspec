@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Sevennet::Api::VERSION
   spec.authors       = ["shoprev"]
   spec.email         = ["admin@shoprev.net"]
-  spec.description   = %q{Generic Ruby 7netshopping API}
-  spec.summary       = %q{Generic Ruby 7netshopping API}
+  spec.description   = %q{Ruby 7netshopping API using Nokogiri.}
+  spec.summary       = %q{Ruby 7netshopping API using Nokogiri.}
   spec.homepage      = "https://github.com/shoprev/sevennet-api"
   spec.license       = "MIT"
 

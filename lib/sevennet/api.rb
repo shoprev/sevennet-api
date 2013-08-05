@@ -123,7 +123,7 @@ module Sevennet
       opts = self.options.merge(opts) if self.options
       
       # Include other required options
-      opts[:Timestamp] = Time.now.strftime('%Y-%m-%dT%XZ')
+      opts[:Timestamp] = Time.now.utc.strftime('%Y-%m-%dT%XZ')
 
       request_url = prepare_url(opts)
 
