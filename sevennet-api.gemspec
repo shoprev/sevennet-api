@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Sevennet::Api::VERSION
   spec.authors       = ["shoprev"]
   spec.email         = ["admin@shoprev.net"]
-  spec.description   = %q{Ruby 7netshopping API using Nokogiri.}
-  spec.summary       = %q{Ruby 7netshopping API using Nokogiri.}
+  spec.description   = %q{Ruby 7net shopping API using Nokogiri.}
+  spec.summary       = %q{Ruby 7net shopping API using Nokogiri.}
   spec.homepage      = "https://github.com/shoprev/sevennet-api"
   spec.license       = "MIT"
 
@@ -22,5 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "vcr"
+  spec.add_development_dependency "webmock", "1.11.0"
   spec.add_runtime_dependency "nokogiri"
 end

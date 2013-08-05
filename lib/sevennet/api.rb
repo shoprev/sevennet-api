@@ -42,7 +42,7 @@ module Sevennet
     # Search spc shops with search terms.
     def self.search_spc_shop(terms, opts = {})
       opts[:operation] = 'SearchSpcShop'
-      opts[:KeywordIn] = CGI.escape(terms.to_s)
+      opts[:KeywordIn] = terms.to_s
 
       self.send_request(opts)
     end
@@ -62,7 +62,7 @@ module Sevennet
       end
 
       opts[:operation] = 'SearchProduct'
-      opts[:KeywordIn] = CGI.escape(terms.to_s)
+      opts[:KeywordIn] = terms.to_s
 
       self.send_request(opts)
     end
@@ -100,7 +100,7 @@ module Sevennet
       raise ArgumentError, "Content is required." if content.to_s.empty?
 
       opts[:operation] = 'SearchContentMatchProduct'
-      opts[:Content] = CGI.escape(content)
+      opts[:Content] = content
 
       self.send_request(opts)
     end    
@@ -111,7 +111,7 @@ module Sevennet
       raise ArgumentError, "TopCategoryCode and Content is required." if content.to_s.empty? || category_code.to_s.empty?
 
       opts[:operation] = 'SearchContentMatchRanking'
-      opts[:Content] = CGI.escape(content)
+      opts[:Content] = content
       opts[:TopCategoryCode] = category_code
 
       
@@ -196,6 +196,7 @@ module Sevennet
         request_url = "#{SERVICE_URL}/#{operation}"
         
         qs = []
+        qr = []
         
         opts = opts.collect do |a,b| 
           [a.to_s, b.to_s] 
@@ -208,11 +209,12 @@ module Sevennet
         opts.each do |e| 
           next if e[1].empty? || e[1].nil?
           qs << "#{e[0]}=#{e[1]}"
+          qr << "#{e[0]}=#{CGI.escape(e[1])}"
         end
         
         request_to_sign ="GET|#{request_url}|#{qs.join('|')}"
         signature = "&Signature=#{sign_request(request_to_sign, secret_key)}"
-        "#{request_url}?#{qs.join('&')}#{signature}"
+        "#{request_url}?#{qr.join('&')}#{signature}"
       end
 
       def self.sign_request(url, key)
